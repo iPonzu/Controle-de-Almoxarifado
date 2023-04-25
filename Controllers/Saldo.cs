@@ -2,21 +2,21 @@ using Models;
 using MyData;
 
 namespace Controllers{
-    public class Saldo{
-        public void Create(Saldo saldo){
+    public class SaldoController{
+        public void Create(SaldoModels saldo){
             using(var context = new Context()){
                 context.Saldos.Add(saldo);
                 context.SaveChanges();
             }
         }
 
-        public static List<Saldo> Read(){
+        public static List<SaldoModels> Read(){
             using (var context = new Context()){
                 return context.Saldos.ToList();
             }
         }
 
-        public static Saldo ReadById(int id){
+        public static SaldoModels ReadById(int id){
             using (var context = new Context()){
                 var Saldo = context.Saldos.Find(id);
                 if (Saldo == null)
@@ -30,14 +30,14 @@ namespace Controllers{
             }
         }
 
-        public static void Update(Saldo saldo){
+        public static void Update(SaldoModels saldo){
             using (var context = new Context()){
                 context.Saldos.Update(saldo);
                 context.SaveChanges();
             }
         }
 
-        public static void Delete(Saldo saldo){
+        public static void Delete(SaldoModels saldo){
             using (var context = new Context()){
                 context.Saldos.Remove(saldo);
                 context.SaveChanges();

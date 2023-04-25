@@ -10,7 +10,7 @@ namespace Views{
         void RefreshList(){
             list.Items.Clear();
             foreach (Models.AlmoxarifadoModels a in Controllers.AlmoxarifadoController()){
-                ListViewItem item = new ListViewItem(a.Nome);
+                ListViewItem item = new ListViewItem(a.nome);
                 list.Items.Add(item);
             }
         }
@@ -36,48 +36,48 @@ namespace Views{
 
             this.RefreshList();
 
-            Button btdCad = new Button();
-            btdCad.Text = "Cadastrar";
-            btdCad.Size = new Size(100, 50);
-            btdCad.Location = new Point(50, 300);
-            btdCad.Click += (sender, e) => {
+            Button btCad = new Button();
+            btCad.Text = "Cadastrar";
+            btCad.Size = new Size(100, 50);
+            btCad.Location = new Point(50, 300);
+            btCad.Click += (sender, e) => {
                 new Cadastrar();
                 this.RefreshList();
                 this.Show();
                 Produto.Almoxarifado();
             };
 
-            Button btdEdit = new Button();
-            btdEdit.Text = "Editar";
-            btdEdit.Size = new Size(100, 50);
-            btdEdit.Location = new Point(170, 300);
-            btdEdit.Click += (sender, e) => {
+            Button btEdit = new Button();
+            btEdit.Text = "Editar";
+            btEdit.Size = new Size(100, 50);
+            btEdit.Location = new Point(170, 300);
+            btEdit.Click += (sender, e) => {
                 new Editar();
                 this.Show();
             };
 
-            Button btdExcluir = new Button();
-            btdExcluir.Text = "Excluir";
-            btdExcluir.Size = new Size(100, 50);
-            btdExcluir.Location = new Point(350, 300);
-            btdExcluir.Click += (sender, e) => {
+            Button btExcluir = new Button();
+            btExcluir.Text = "Excluir";
+            btExcluir.Size = new Size(100, 50);
+            btExcluir.Location = new Point(350, 300);
+            btExcluir.Click += (sender, e) => {
                 Excluir.index();
                 this.Show();
             }; 
 
-            Button btdSair = new Button();
-            btdSair.Text = "Sair";
-            btdSair.Size = new Size(100, 30);
-            btdSair.Location = new Point(530, 300);
-            btdSair.Click += (sender, e) => {
+            Button btSair = new Button();
+            btSair.Text = "Sair";
+            btSair.Size = new Size(100, 30);
+            btSair.Location = new Point(530, 300);
+            btSair.Click += (sender, e) => {
                 this.Close();
             };
 
             this.Controls.Add(list);
-            this.Controls.Add(btdCad);
-            this.Controls.Add(btdEdit);
-            this.Controls.Add(btdExcluir);
-            this.Controls.Add(btdSair);
+            this.Controls.Add(btCad);
+            this.Controls.Add(btEdit);
+            this.Controls.Add(btExcluir);
+            this.Controls.Add(btSair);
             
             this.ShowDialog();
         }   

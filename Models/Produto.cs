@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models{
-    public class Produto{
+    public class ProdutoModels{
         [Column("ID do Produto")]
         [System.ComponentModel.DataAnnotations.Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -13,7 +13,7 @@ namespace Models{
         [Column("Preço: ")]
         public float Preço {get;set;}
 
-        public Produto(int id, string Nome, float Preço){
+        public ProdutoModels(int id, string Nome, float Preço){
             this.id = id;
             this.Nome = Nome;
             this.Preço = Preço;

@@ -1,12 +1,10 @@
-using System.Windows.Forms;
 using Views;
 
 namespace index{
-    public class Almoxarifado{
+    public class Program{
         public static void Main(string[] args){
 
-
-            
+            Menu.index();
         }
     }
 }

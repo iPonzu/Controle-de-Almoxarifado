@@ -2,23 +2,23 @@ using Models;
 using MyData;
 
 namespace Controllers{
-    public class Almoxarifado{
-        public void Create(Almoxarifado almoxarifado){
+    public class AlmoxarifadoController{
+        public void Create(AlmoxarifadoModels almoxarifado){
             using(var context = new Context()){
                 context.Almoxarifados.Add(almoxarifado);
                 context.SaveChanges();
             }
         }
 
-        public static List<Almoxarifado> Read(){
+        public static List<AlmoxarifadoModels> Read(){
             using (var context = new Context()){
                 return context.Almoxarifados.ToList();
             }
         }
 
-        public static Almoxarifado ReadById(int id){
+        public static AlmoxarifadoModels ReadById(int id_almoxarifado){
             using (var context = new Context()){
-                var almoxarifado = context.Almoxarifados.Find(id);
+                var almoxarifado = context.Almoxarifados.Find(id_almoxarifado);
                 if (almoxarifado == null)
                 {
                     throw new ArgumentException("Almoxarifado não encontrado");
@@ -30,14 +30,14 @@ namespace Controllers{
             }
         }
 
-        public static void Update(Almoxarifado almoxarifado){
+        public static void Update(AlmoxarifadoModels almoxarifado){
             using (var context = new Context()){
                 context.Almoxarifados.Update(almoxarifado);
                 context.SaveChanges();
             }
         }
 
-        public static void Delete(Almoxarifado almoxarifado){
+        public static void Delete(AlmoxarifadoModels almoxarifado){
             using (var context = new Context()){
                 context.Almoxarifados.Remove(almoxarifado);
                 context.SaveChanges();

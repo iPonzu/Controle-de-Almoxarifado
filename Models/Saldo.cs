@@ -1,11 +1,11 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models{
-    public class Saldo{
-        [Column("idSaldo")]
+    public class SaldoModels{
+        [Column("ID Saldo")]
         [System.ComponentModel.DataAnnotations.Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int idSaldo {get;set;}
+        public int id_saldo {get;set;}
 
         [Column("Nome: ")]
         public string nome {get;set;}
@@ -16,8 +16,8 @@ namespace Models{
         [Column("Quantidade: ")]
         public string quant {get;set;}
 
-        public Saldo(int idSaldo, string nome, string almoxarifado, string quant){
-            this.idSaldo = idSaldo;
+        public SaldoModels(int id_saldo, string nome, string almoxarifado, string quant){
+            this.id_saldo = id_saldo;
             this.nome = nome;
             this.almoxarifado = almoxarifado;
             this.quant = quant;
