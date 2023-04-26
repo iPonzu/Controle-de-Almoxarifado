@@ -11,12 +11,11 @@ namespace Models{
         public string Nome {get;set;}
 
         [Column("Preço: ")]
-        public float Preço {get;set;}
+        public string Preco {get;set;}
 
-        public ProdutoModels(int id, string Nome, float Preço){
-            this.id = id;
+        public ProdutoModels(string Nome, string Preco){
             this.Nome = Nome;
-            this.Preço = Preço;
+            this.Preco = Preco;
         }
     }
 }

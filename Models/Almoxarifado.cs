@@ -13,10 +13,12 @@ namespace Models
         [Column("Nome")]
         public string nome{get; set;}   
 
-        public AlmoxarifadoModels(int id_almoxarifado, string nome)
+        public AlmoxarifadoModels(string nome)
         {
-            this.id_almoxarifado = id_almoxarifado;
             this.nome = nome;
+        }
+        internal void RefreshList(){
+            throw new NotImplementedException();
         }
     }
 }
