@@ -1,6 +1,3 @@
-using Models;
-using Controllers;
-
 namespace Views
 {
     public class Menu{
@@ -9,7 +6,7 @@ namespace Views
             Form menu = new Form();
             
             menu.Text = "Menu";
-            menu.Size = new Size(300, 300);
+            menu.Size = new Size(300, 450);
             menu.StartPosition = FormStartPosition.CenterScreen;
             menu.FormBorderStyle = FormBorderStyle.FixedSingle;
             menu.MaximizeBox = false;

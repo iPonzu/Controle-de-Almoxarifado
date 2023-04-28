@@ -8,6 +8,6 @@
 -  DataBase
 
 ---
-### 🎯 For what?
+### 🎯 Objective
 - Create, manage, list and delete informations from the tables on the forms
 - Organize, by ID's, the itens from *forms*

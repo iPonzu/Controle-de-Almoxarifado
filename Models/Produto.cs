@@ -8,14 +8,14 @@ namespace Models{
         public int id { get; set; }
 
         [Column("Nome: ")]
-        public string Nome {get;set;}
+        public string nome {get;set;}
 
         [Column("Preço: ")]
-        public string Preco {get;set;}
+        public string preco {get;set;}
 
-        public ProdutoModels(string Nome, string Preco){
-            this.Nome = Nome;
-            this.Preco = Preco;
+        public ProdutoModels(string nome, string preco){
+            this.nome = nome;
+            this.preco = preco;
         }
     }
 }

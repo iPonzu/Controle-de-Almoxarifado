@@ -1,54 +1,47 @@
 using Models;
 using Controllers;
 
+
 namespace Views{
+    public class ListProduto : Form{
 
-    public enum Option {Update, Delete}
+        public enum Option {Update, Delete}
 
-    public class ListAlmoxarifado : Form{
+        ListView listProduto;
 
-        ListView listAlmoxarifado;
-
-        private void AddListView(Models.AlmoxarifadoModels almoxarifado){
+        private void AddListView(Models.ProdutoModels produto){
 
             string[]row = {
 
-                almoxarifado.nome
+                produto.nome,
+                produto.preco
             };
 
             ListViewItem item = new ListViewItem(row);
-            listAlmoxarifado.Items.Add(item);
+            listProduto.Items.Add(item);
         }
 
         public void RefreshList()
         {
-            listAlmoxarifado.Items.Clear();
+            listProduto.Items.Clear();
 
-            List<Models.AlmoxarifadoModels> list = Controllers.AlmoxarifadoController.Read();
+            List<Models.ProdutoModels> list = Controllers.ProdutoController.Read();
 
-            foreach (Models.AlmoxarifadoModels almoxarifado in list)
+            foreach (Models.ProdutoModels produto in list)
             {
-                AddListView(almoxarifado);
+                AddListView(produto);
             }
         }
 
         private void btCadt_Click(object sender, EventArgs e){
-
-            var AlmoxarifadoCreate = new Views.AlmoxarifadoCreate();
-            AlmoxarifadoCreate.Show();
+            var ProdutoCreate = new Views.ProdutoCreate();
         }
 
         private void btUpdate_Click(object sender, EventArgs e){
             try{
 
-                AlmoxarifadoModels almoxarifado = GetSelectedAlmoxarifado(Option.Update);
+                ProdutoModels produto = GetSelectedProduto(Option.Update);
                 RefreshList();
-                // var AlmoxarifadoUpdateView = new View.AlmoxarifadoUpdate(almoxarifado);
-                // if(AlmoxarifadoUpdateView.ShowDialog() == DialogResult.OK)
-                // {
-                //     RefreshList();
-                //     MessageBox.Show("almoxarifado editado com sucesso");
-                // }
             }
             catch(Exception err)
             {
@@ -58,11 +51,11 @@ namespace Views{
 
         private void btDelete_Click(object sender, EventArgs e){
             try{
-                AlmoxarifadoModels almoxarifado = GetSelectedAlmoxarifado(Option.Delete);
-                DialogResult result = MessageBox.Show("Deseja mesmo deletar esse almoxarifado?", "Confirmar exclusão", MessageBoxButtons.YesNo);
+                ProdutoModels produto = GetSelectedProduto(Option.Delete);
+                DialogResult result = MessageBox.Show("Deseja mesmo deletar esse Produto?", "Confirmar exclusão", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    Controllers.AlmoxarifadoController.Delete(almoxarifado);
+                    Controllers.ProdutoController.Delete(produto);
                     RefreshList();
                 }
             }
@@ -78,28 +71,27 @@ namespace Views{
                 }
             }
         }
-        
-        public AlmoxarifadoModels GetSelectedAlmoxarifado(Option option)
+
+        public ProdutoModels GetSelectedProduto(Option option)
         {
-            if(listAlmoxarifado.SelectedItems.Count > 0)
+            if(listProduto.SelectedItems.Count > 0)
             {
-                int selectedAlmoxarifadoId = int.Parse(listAlmoxarifado.SelectedItems[0].Text);
-                return Controllers.AlmoxarifadoController.ReadById(selectedAlmoxarifadoId);
+                int selectedProdutoId = int.Parse(listProduto.SelectedItems[0].Text);
+                return Controllers.ProdutoController.ReadById(selectedProdutoId);
             }
             else{
 
-                throw new Exception($"Selecione um almoxarifado para {(option == Option.Update ? "editar" : "deletar")}");
+                throw new Exception($"Selecione um Produto para {(option == Option.Update ? "editar" : "deletar")}");
             }
         }
 
-        private void btClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
+        private void btClose_Click(object sender, EventArgs e){
+            Close();
         }
 
-        public ListAlmoxarifado()
+        public ListProduto()
         {
-            this.Text = "Saldos";
+            this.Text = "Produtos";
             this.Size = new Size(800, 450);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -108,14 +100,13 @@ namespace Views{
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
 
-            listAlmoxarifado = new ListView();
-            listAlmoxarifado.Size = new Size(680, 260);
-            listAlmoxarifado.Location = new Point(50, 50);
-            listAlmoxarifado.View = View.Details;
-            listAlmoxarifado.Columns.Add("Nome");
-            listAlmoxarifado.Columns.Add("Almoxarifado");
-            listAlmoxarifado.Columns.Add("Quantidade");
-            this.Controls.Add(listAlmoxarifado);
+            listProduto = new ListView();
+            listProduto.Size = new Size(680, 260);
+            listProduto.Location = new Point(50 ,50);
+            listProduto.View = View.Details;
+            listProduto.Columns.Add("Nome");
+            listProduto.Columns.Add("Preço");
+            this.Controls.Add(listProduto);
 
             RefreshList();
 
